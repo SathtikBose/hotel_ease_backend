@@ -73,6 +73,9 @@ app.use("/api/v1/bookings", booking);
 app.get("/", (req, res) => {
   res.status(200).send("OK");
 });
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", time: new Date().toISOString() });
+});
 
 app.use(globalErrorHandler);
 
@@ -83,6 +86,7 @@ let server;
 const startServer = async () => {
   try {
     await connectDB();
+    console.log(`PORT: ${process.env.PORT}, NODE_ENV: ${process.env.NODE_ENV}`);
     server = app.listen(port, host, () => {
       console.log(
         `Server running in ${process.env.NODE_ENV} mode on http://${host}:${port}`
@@ -101,7 +105,7 @@ startServer();
 
 process.on("unhandledRejection", (err) => {
   console.log("UNHANDLED REJECTION! 💥 Shutting down...");
-  console.log(err.name, err.message);
+  console.log(err.name, err.message, err.stack);
   if (server) {
     server.close(() => {
       process.exit(1);
@@ -113,7 +117,7 @@ process.on("unhandledRejection", (err) => {
 
 process.on("uncaughtException", (err) => {
   console.log("UNCAUGHT EXCEPTION! 💥 Shutting down...");
-  console.log(err.name, err.message);
+  console.log(err.name, err.message, err.stack);
   process.exit(1);
 });
 
