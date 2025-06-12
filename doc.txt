@@ -1,0 +1,101 @@
+🏨 Hotelease Backend Documentation
+
+📦 Project Structure
+- backend/
+  - config.env – Environment variables
+  - index.js – Entry point
+  - server.js – Server setup
+  - controller/ – Route controllers
+  - data/ – Static data (e.g., rooms)
+  - middleware/ – Custom middleware
+  - models/ – Database models
+  - public/ – Static assets (images, audio)
+  - routes/ – API route definitions
+  - utils/ – Utility functions
+
+---
+
+🔑 Authentication & Users
+- authController.js  
+  - 🔐 User signup & login
+  - 🔄 Password reset (forgot/reset)
+  - 🛡️ JWT token generation & verification
+  - 🚫 Route protection middleware
+- userController.js  
+  - 👤 Get user profile
+  - ✏️ Update user details & password
+  - 🖼️ Upload/change profile picture
+- usersModel.js  
+  - 🗃️ User schema (name, email, password, role, etc.)
+
+---
+
+🏠 Rooms
+- roomsController.js  
+  - 📋 List all rooms
+  - 🔍 Get room details by ID
+  - ➕ Add new room (admin)
+  - 📝 Update room info (admin)
+  - ❌ Delete room (admin)
+- roomsModel.js  
+  - 🗃️ Room schema (name, price, images, description, etc.)
+- data/rooms.json  
+  - 🏷️ Sample room data for seeding
+
+---
+
+📅 Bookings
+- bookingsController.js  
+  - 📖 Book a room
+  - 📜 View user bookings
+  - 🗑️ Cancel a booking
+- bookingsModel.js  
+  - 🗃️ Booking schema (user, room, dates, status)
+
+---
+
+🛣️ API Routes
+- userRoutes.js  
+  - /api/users – User-related endpoints
+- roomRoutes.js  
+  - /api/rooms – Room-related endpoints
+- bookingRoutes.js  
+  - /api/bookings – Booking-related endpoints
+
+---
+
+🛠️ Middleware
+- error.js  
+  - 🚨 Centralized error handling
+- validate.js  
+  - ✅ Request validation
+
+---
+
+🧰 Utilities
+- appError.js  
+  - ⚠️ Custom error class
+- catchAsync.js  
+  - 🔄 Async error wrapper
+- email.js  
+  - 📧 Email sending (for password reset, etc.)
+
+---
+
+📂 Public Assets
+- public/images/  
+  - 🖼️ Room, user, and other images
+- public/audio/  
+  - 🔊 Notification sounds
+
+---
+
+🚀 Other Features
+- seedRooms.js  
+  - 🌱 Seed database with sample rooms
+- .env  
+  - 🔑 Store sensitive config (DB URI, JWT secret, etc.)
+
+---
+
+Let me know if you want this as a markdown file or need more details on any feature!
